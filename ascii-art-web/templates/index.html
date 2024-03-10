@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- The head section contains metadata and styles for the document -->
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sets the viewport width and initial scale for responsive design -->
+    <title>ASCII Art</title>
+    <!-- Sets the title of the document -->
+    <style>
+        body {
+            font-family: monospace;
+            text-align: center;
+        }
+        /* Applies a monospace font family to the body element */
+        pre.ascii-art {
+            white-space: pre;
+        }
+        /* Preserves line breaks and spacing in the pre element */
+        #ascii-output {
+            font-family: monospace;
+            white-space: pre-wrap;
+            text-align: left;
+            width: 100%;
+            height: 300px;
+            overflow-y: scroll;
+        }
+        /* Adjusts the CSS for the ASCII art output container */
+    </style>
+    <!-- Defines the CSS styles for the document -->
+</head>
+<body>
+    <h2>Welcome to Ascii Art Web</h2>
+    <form method="post" action="/">
+        <i for="userText">Enter Text:</i><br>
+        <textarea name="userText" id="userText" rows="4" cols="50"></textarea><br>
+        <label>Choose a banner type:</label>
+        <br> <br>
+        <input type="radio" id="standard" name="bannerType" value="Standard" checked>
+        <label for="standard">Standard</label>
+        <input type="radio" id="shadow" name="bannerType" value="Shadow">
+        <label for="shadow">Shadow</label>
+        <input type="radio" id="thinkertoy" name="bannerType" value="Thinkertoy">
+        <label for="thinkertoy">Thinkertoy</label>
+        <br>
+        
+        <input type="submit" value="Submit">
+    </form>
+    
+    {{if .OutputArr}}
+    <pre class="ascii-art">
+        {{range .OutputArr}}{{.}}
+        {{end}}
+    </pre>
+    {{end}}
+</body>
+</html>
